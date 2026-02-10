@@ -1,0 +1,15 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# کپی package files
+COPY package*.json ./
+
+# نصب پکیج‌ها
+RUN npm install
+
+# کپی کد پروژه
+COPY . .
+
+# اجرای سرور توسعه
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
